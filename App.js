@@ -1,7 +1,21 @@
-
+import { useState } from 'react';
 import { StyleSheet, Text, View, Button, TextInput } from 'react-native';
 
 export default function App() {
+  const [enteredText, setEnteredText] = useState(' ');
+  //const [nameList,setNameList] = useState([]);
+
+const addBtnFunction = () =>{
+  //setNameList((currentNameList) => [...currentNameList,nameList]);
+
+}
+
+const inputData = (data) =>{
+  setEnteredText(data);
+
+}
+
+
   return (
     <View style={styles.container}>
       <Text style={styles.Text}>Hello friends!</Text>
@@ -9,8 +23,14 @@ export default function App() {
 
 
     <View style ={styles.inputContriner}>
-      <TextInput style={styles.inputs} placeholder='Your Name '/>
-      <Button title='Click to Go'/>
+      <TextInput style={styles.inputs} placeholder='Your Name ' onChangeText={inputData}/>
+      <Button title='Click to Go' onPress={addBtnFunction}/>
+    </View>
+    <View>
+      {
+        //nameList.map((name) =><Text key={name}>{name}</Text>)
+        <Text>{enteredText}</Text>
+      }
     </View>
     </View>
   );
