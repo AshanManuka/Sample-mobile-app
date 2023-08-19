@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { StyleSheet, Text, View, Button, TextInput, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, Button, TextInput, FlatList } from 'react-native';
 
 export default function App() {
   const [enteredText, setEnteredText] = useState(' ');
@@ -26,12 +26,21 @@ const inputData = (data) =>{
       <TextInput style={styles.inputs} placeholder='Your Name ' onChangeText={inputData}/>
       <Button title='Click to Add' onPress={addBtnFunction}/>
     </View>
-    <ScrollView >
+
+    <FlatList data={nameList} renderItem={itemData => {
+      return(
+        <Text style={styles.nameLi}>{itemData.item}</Text>
+      );
+    }}>
+
+    </FlatList>
+      
+    {/* <ScrollView >
       {
         nameList.map((name) =><Text style={styles.nameLi} key={name}>{name}</Text>)
         //<Text>{enteredText}</Text>
       }
-    </ScrollView>
+    </ScrollView> */}
     </View>
   );
 }
