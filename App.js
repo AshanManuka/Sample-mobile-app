@@ -6,7 +6,7 @@ export default function App() {
   const [nameList,setNameList] = useState([]);
 
 const addBtnFunction = () =>{
-  setNameList((currentNameList) => [...currentNameList,enteredText]);
+  setNameList((currentNameList) => [...currentNameList,{text : enteredText, id : Math.random.toString()}]);
 
 }
 
@@ -27,9 +27,9 @@ const inputData = (data) =>{
       <Button title='Click to Add' onPress={addBtnFunction}/>
     </View>
 
-    <FlatList data={nameList} renderItem={itemData => {
+    <FlatList data={nameList} keyExtractor={(item,index) => item.id} renderItem={itemData => {
       return(
-        <Text style={styles.nameLi}>{itemData.item}</Text>
+        <Text style={styles.nameLi}>{itemData.item.text}</Text>
       );
     }}>
 
