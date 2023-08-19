@@ -1,21 +1,16 @@
 import { useState } from 'react';
 import { StyleSheet, Text, View, Button, TextInput, FlatList } from 'react-native';
 import DisplayNameList from './components/DisplayNameList';
+import Nameinput from './components/NameInput';
 
 
 export default function App() {
-  const [enteredText, setEnteredText] = useState(' ');
   const [nameList,setNameList] = useState([]);
 
-const addBtnFunction = () =>{
+const addBtnFunction = (enteredText) =>{
   setNameList((currentNameList) => [...currentNameList,{text : enteredText, id : Math.random.toString()}]);
 
-}
-
-const inputData = (data) =>{
-  setEnteredText(data);
-
-}
+} 
 
 
   return (
@@ -23,11 +18,7 @@ const inputData = (data) =>{
       <Text style={styles.Text}>Hello friends!</Text>
       <Text style={styles.Text}>This is my first Mobile Application</Text>
 
-
-    <View style ={styles.inputContriner}>
-      <TextInput style={styles.inputs} placeholder='Your Name ' onChangeText={inputData}/>
-      <Button title='Click to Add' onPress={addBtnFunction}/>
-    </View>
+      <Nameinput onAddName={addBtnFunction} />
 
     <FlatList data={nameList} keyExtractor={(item,index) => item.id} renderItem={itemData => {
       return(

@@ -2,7 +2,7 @@ import {View, Text, StyleSheet} from 'react-native';
 
 const DisplayNameList = (props) =>{
     return(
-        <View>
+        <View style={styles.viewStyle}>
             <Text style={styles.nameLi}>{props.text}</Text>
         </View>
 
@@ -16,6 +16,9 @@ const styles = StyleSheet.create({
       backgroundColor : '#79255B',
       marginBottom : 3,
       color: 'white'
+    },
+    viewStyle:{
+        width:250
     }
   });
 
