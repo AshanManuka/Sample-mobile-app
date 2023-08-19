@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { StyleSheet, Text, View, Button, TextInput, FlatList } from 'react-native';
+import DisplayNameList from './components/DisplayNameList';
+
 
 export default function App() {
   const [enteredText, setEnteredText] = useState(' ');
@@ -29,8 +31,8 @@ const inputData = (data) =>{
 
     <FlatList data={nameList} keyExtractor={(item,index) => item.id} renderItem={itemData => {
       return(
-        <Text style={styles.nameLi}>{itemData.item.text}</Text>
-      );
+          <DisplayNameList text={itemData.item.text}/>
+        )
     }}>
 
     </FlatList>
