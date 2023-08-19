@@ -3,10 +3,10 @@ import { StyleSheet, Text, View, Button, TextInput } from 'react-native';
 
 export default function App() {
   const [enteredText, setEnteredText] = useState(' ');
-  //const [nameList,setNameList] = useState([]);
+  const [nameList,setNameList] = useState([]);
 
 const addBtnFunction = () =>{
-  //setNameList((currentNameList) => [...currentNameList,nameList]);
+  setNameList((currentNameList) => [...currentNameList,enteredText]);
 
 }
 
@@ -24,12 +24,12 @@ const inputData = (data) =>{
 
     <View style ={styles.inputContriner}>
       <TextInput style={styles.inputs} placeholder='Your Name ' onChangeText={inputData}/>
-      <Button title='Click to Go' onPress={addBtnFunction}/>
+      <Button title='Click to Add' onPress={addBtnFunction}/>
     </View>
-    <View>
+    <View >
       {
-        //nameList.map((name) =><Text key={name}>{name}</Text>)
-        <Text>{enteredText}</Text>
+        nameList.map((name) =><Text style={styles.nameLi} key={name}>{name}</Text>)
+        //<Text>{enteredText}</Text>
       }
     </View>
     </View>
@@ -56,5 +56,11 @@ const styles = StyleSheet.create({
     borderBottomWidth:2,
     width: 150,
     borderBottomColor: 'yellow'
+  },
+  nameLi:{
+    padding: 5,
+    backgroundColor : '#79255B',
+    marginBottom : 3,
+    color: 'white'
   }
 });
